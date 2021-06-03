@@ -1,3 +1,4 @@
+import 'package:exam_flutter/src/screens/allCotizaciones_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/src/material/list_tile.dart';
 import 'package:exam_flutter/src/screens/cotizaciones_page.dart';
@@ -45,6 +46,11 @@ class MyHomePage extends StatelessWidget {
             title: Text("Inicio"),
             leading: Icon(Icons.home),
             onTap: () => showHome(context),
+          ),
+          ListTile(
+            title: Text("Cotizaciones"),
+            leading: Icon(Icons.home),
+            onTap: () => showCotizaciones(context),
           )
         ],
       ),
@@ -54,6 +60,14 @@ class MyHomePage extends StatelessWidget {
   void showHome(context) {
     final route = MaterialPageRoute(builder: (context) {
       return Cotizacionespage();
+    });
+
+    Navigator.push(context, route);
+  }
+
+  void showCotizaciones(context) {
+    final route = MaterialPageRoute(builder: (context) {
+      return AllCotizaciones();
     });
 
     Navigator.push(context, route);
