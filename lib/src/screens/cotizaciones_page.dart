@@ -1,3 +1,5 @@
+import 'package:exam_flutter/src/api/api_service.dart';
+import 'package:exam_flutter/src/models/cotizacion.dart';
 import 'package:flutter/material.dart';
 
 // class Cotizacionespage extends StatelessWidget {
@@ -11,9 +13,11 @@ import 'package:flutter/material.dart';
 // }
 
 class Cotizacionespage extends StatelessWidget {
+  ApiService _apiService = ApiService();
+
   late String vVencimiento;
-  late String vTCAgenteId;
-  late String vTCClienteId;
+  late int vTCAgenteId;
+  late int vTCClienteId;
 
   final formKey = GlobalKey<FormState>();
 
@@ -43,7 +47,7 @@ class Cotizacionespage extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(labelText: "Agente"),
                 onSaved: (value) {
-                  vTCAgenteId = value!;
+                  vTCAgenteId = value as int;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -54,7 +58,7 @@ class Cotizacionespage extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(labelText: "Cliente"),
                 onSaved: (value) {
-                  vVencimiento = value!;
+                  vTCClienteId = value as int;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -82,7 +86,25 @@ class Cotizacionespage extends StatelessWidget {
 
   void _guardar(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
+      // debugPrint(vencimiento);
+      //formKey.currentState!.save();
+    } else {
+      Profile profile = Profile(
+          vencimiento: vVencimiento,
+          tcclienteid: vTCClienteId,
+          tcagenteId: vTCAgenteId);
+
+      _apiService.createProfile(profile).then((isSuccess) {
+        if (isSuccess) {
+          // Navigator.pop(_scaffoldState.currentState.context, true);
+        } else {
+          // _scaffoldState.currentState.showSnackBar(SnackBar(
+          //   content: Text("Submit data failed"),
+          // ));
+        }
+      });
     }
   }
 }
+
+class Feature {}
