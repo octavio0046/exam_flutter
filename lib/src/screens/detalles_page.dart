@@ -1,38 +1,24 @@
 import 'package:exam_flutter/src/screens/cotizaciones_page.dart';
 import 'package:flutter/material.dart';
-import 'detalles_page.dart';
 
-class AllCotizaciones extends StatelessWidget {
+class DetallesPage extends StatelessWidget {
   final cotizacionesList = [
-    'Cotizacion 1',
-    'Cotizacion 2',
-    'Cotizacion 3',
-    'Cotizacion 4',
+    'Vehiculo 1',
+    'Vehiculo 2',
+    'Vehiculo 3',
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cotizaciones"),
+        title: Text("Detalle de Cotizacion"),
       ),
       body: ListView(
         //children: _generarItems(),
         children: _crearItemsCorta(context),
       ),
       // body: Padding(padding: const EdgeInsets.all(16.0)),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => showCotizacionesAdd(context),
-      ),
     );
-  }
-
-  void showCotizacionesAdd(context) {
-    final route = MaterialPageRoute(builder: (context) {
-      return Cotizacionespage();
-    });
-
-    Navigator.push(context, route);
   }
 
   List<Widget> _crearItemsCorta(BuildContext context) {
@@ -44,20 +30,12 @@ class AllCotizaciones extends StatelessWidget {
             subtitle: Text('SubTitulo'),
             leading: Icon(Icons.accessibility),
             trailing: Icon(Icons.keyboard_arrow_right),
-            onTap: () => showGetDetallesCotizacion(context),
+            //  onTap: () => showGetDetallesCotizacion(context),
           ),
           Divider()
         ],
       );
     }).toList();
     return varwidgets;
-  }
-
-  void showGetDetallesCotizacion(context) {
-    final route = MaterialPageRoute(builder: (context) {
-      return DetallesPage();
-    });
-
-    Navigator.push(context, route);
   }
 }
