@@ -1,3 +1,4 @@
+import 'package:exam_flutter/src/screens/Marcas/allmarcas_page.dart';
 import 'package:exam_flutter/src/screens/allCotizaciones_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/src/material/list_tile.dart';
@@ -13,10 +14,10 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       key: _scafkey,
       appBar: AppBar(
-        title: Text("Uso de Drawer"),
+        title: Text("Inicio"),
       ),
       body: Center(
-        child: Text("hola"),
+        child: Text("Bienvenidos"),
       ),
       drawer: _getDrawer(context),
     );
@@ -51,6 +52,11 @@ class MyHomePage extends StatelessWidget {
             title: Text("Cotizaciones"),
             leading: Icon(Icons.home),
             onTap: () => showCotizaciones(context),
+          ),
+          ListTile(
+            title: Text("Marcas"),
+            leading: Icon(Icons.home),
+            onTap: () => showAllMarcas(context),
           )
         ],
       ),
@@ -59,7 +65,7 @@ class MyHomePage extends StatelessWidget {
 
   void showHome(context) {
     final route = MaterialPageRoute(builder: (context) {
-      return Cotizacionespage();
+      return MyHomePage();
     });
 
     Navigator.push(context, route);
@@ -68,6 +74,14 @@ class MyHomePage extends StatelessWidget {
   void showCotizaciones(context) {
     final route = MaterialPageRoute(builder: (context) {
       return AllCotizaciones();
+    });
+
+    Navigator.push(context, route);
+  }
+
+  void showAllMarcas(context) {
+    final route = MaterialPageRoute(builder: (context) {
+      return AllMarcasPage();
     });
 
     Navigator.push(context, route);
