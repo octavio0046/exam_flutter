@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/material/list_tile.dart';
 import 'package:exam_flutter/src/screens/cotizaciones_page.dart';
 
+import 'Vehiculos/allVehiculos_page.dart';
+
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
@@ -57,6 +59,11 @@ class MyHomePage extends StatelessWidget {
             title: Text("Marcas"),
             leading: Icon(Icons.home),
             onTap: () => showAllMarcas(context),
+          ),
+          ListTile(
+            title: Text("Vehiculos"),
+            leading: Icon(Icons.home),
+            onTap: () => showAllVehiculos(context),
           )
         ],
       ),
@@ -82,6 +89,14 @@ class MyHomePage extends StatelessWidget {
   void showAllMarcas(context) {
     final route = MaterialPageRoute(builder: (context) {
       return AllMarcasPage();
+    });
+
+    Navigator.push(context, route);
+  }
+
+  void showAllVehiculos(context) {
+    final route = MaterialPageRoute(builder: (context) {
+      return AllVehiculosPage();
     });
 
     Navigator.push(context, route);
