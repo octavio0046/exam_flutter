@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:exam_flutter/src/screens/cotizaciones_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'detalles_page.dart';
 
 class AllCotizaciones extends StatelessWidget {
@@ -34,6 +37,13 @@ class AllCotizaciones extends StatelessWidget {
 
     Navigator.push(context, route);
   }
+
+  // cargarData() {
+  //   rootBundle.loadString('data/menu_opts.json').then((data) {
+  //     Map dataMap = json.decode(data);
+  //     print(dataMap['nombreApp']);
+  //   });
+  // }
 
   List<Widget> _crearItemsCorta(BuildContext context) {
     var varwidgets = cotizacionesList.map((item) {
