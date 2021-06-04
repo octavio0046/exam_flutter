@@ -1,4 +1,4 @@
-import 'package:exam_flutter/src/screens/cotizaciones_page.dart';
+import 'package:exam_flutter/src/screens/add_detalle_cotizacion_page.dart';
 import 'package:flutter/material.dart';
 
 class DetallesPage extends StatelessWidget {
@@ -16,6 +16,11 @@ class DetallesPage extends StatelessWidget {
       body: ListView(
         //children: _generarItems(),
         children: _crearItemsCorta(context),
+      ),
+      // body: Padding(padding: const EdgeInsets.all(16.0)),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => showProductoAdd(context),
       ),
       // body: Padding(padding: const EdgeInsets.all(16.0)),
     );
@@ -37,5 +42,13 @@ class DetallesPage extends StatelessWidget {
       );
     }).toList();
     return varwidgets;
+  }
+
+  void showProductoAdd(context) {
+    final route = MaterialPageRoute(builder: (context) {
+      return AddDetalleCotizacionPage();
+    });
+
+    Navigator.push(context, route);
   }
 }
